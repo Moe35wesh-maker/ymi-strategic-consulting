@@ -20,6 +20,7 @@
             --text: #2D3748;
             --text-light: #718096;
             --white: #FFFFFF;
+            --green: #48BB78;
             --shadow: 0 4px 20px rgba(26, 54, 93, 0.08);
             --shadow-lg: 0 10px 40px rgba(26, 54, 93, 0.12);
         }
@@ -37,8 +38,8 @@
         .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .nav-logo img { height: 48px; width: auto; }
         nav.scrolled .nav-logo img { height: 40px; }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: rgba(255, 255, 255, 0.85); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s ease; position: relative; }
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--orange); transition: width 0.3s ease; }
         .nav-links a:hover { color: var(--orange); }
         .nav-links a:hover::after { width: 100%; }
@@ -120,17 +121,66 @@
         .canvas-cell-content li { margin-bottom: 6px; padding-left: 16px; position: relative; }
         .canvas-cell-content li::before { content: '•'; position: absolute; left: 0; color: var(--orange); }
 
+        /* Implementation Toolkit Section */
+        .toolkit { background: var(--white); }
+        .toolkit-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .toolkit-intro-content h2 { font-size: 2.5rem; color: var(--navy); margin-bottom: 20px; }
+        .toolkit-intro-content p { color: var(--text-light); margin-bottom: 16px; }
+        .toolkit-stats { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; justify-content: center; }
+        .toolkit-stat { text-align: center; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .toolkit-stat:last-child { border-bottom: none; }
+        .toolkit-stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--orange); }
+        .toolkit-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+        .toolkit-tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
+        .toolkit-tab { padding: 12px 24px; background: var(--cream); border: 2px solid transparent; border-radius: 100px; color: var(--text); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .toolkit-tab:hover { border-color: var(--orange); color: var(--orange); }
+        .toolkit-tab.active { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
+        .toolkit-content { background: var(--cream); border-radius: 20px; padding: 48px; }
+        .toolkit-content-header { margin-bottom: 32px; }
+        .toolkit-content-title { font-size: 1.75rem; color: var(--navy); margin-bottom: 8px; }
+        .toolkit-content-subtitle { color: var(--text-light); }
+
+        .toolkit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .toolkit-card { background: var(--white); border-radius: 12px; padding: 24px; box-shadow: var(--shadow); transition: all 0.3s ease; }
+        .toolkit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .toolkit-card-icon { width: 48px; height: 48px; background: linear-gradient(135deg, var(--orange-pale) 0%, var(--cream) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+        .toolkit-card-icon svg { width: 24px; height: 24px; stroke: var(--orange); }
+        .toolkit-card h4 { font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+        .toolkit-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 12px; }
+        .toolkit-card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .toolkit-card-tag { padding: 4px 10px; background: var(--cream); border-radius: 100px; font-size: 0.75rem; color: var(--navy); font-weight: 500; }
+
+        .toolkit-list { list-style: none; }
+        .toolkit-list li { padding: 16px 0; padding-left: 32px; position: relative; border-bottom: 1px solid var(--cream-dark); }
+        .toolkit-list li:last-child { border-bottom: none; }
+        .toolkit-list li::before { content: '✓'; position: absolute; left: 0; top: 16px; width: 20px; height: 20px; background: var(--green); color: white; border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        .toolkit-list-title { font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+        .toolkit-list-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Timeline */
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--orange), var(--orange-light)); }
+        .timeline-item { position: relative; padding-bottom: 32px; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-marker { position: absolute; left: -40px; top: 0; width: 26px; height: 26px; background: var(--white); border: 3px solid var(--orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--orange); }
+        .timeline-content { background: var(--white); border-radius: 12px; padding: 20px; box-shadow: var(--shadow); }
+        .timeline-week { font-size: 0.75rem; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+        .timeline-title { font-size: 1rem; color: var(--navy); font-weight: 600; margin-bottom: 8px; }
+        .timeline-tasks { font-size: 0.85rem; color: var(--text-light); }
+
         /* Deliverables Section */
-        .deliverables { background: var(--white); }
+        .deliverables { background: var(--cream); }
         .deliverables-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
-        .deliverable-card { background: var(--cream); border-radius: 16px; padding: 40px; position: relative; overflow: hidden; transition: all 0.4s ease; }
+        .deliverable-card { background: var(--white); border-radius: 16px; padding: 40px; position: relative; overflow: hidden; transition: all 0.4s ease; }
         .deliverable-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--orange), var(--orange-light)); }
         .deliverable-card:hover { transform: translateX(8px); box-shadow: var(--shadow); }
         .deliverable-letter { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--orange); line-height: 1; margin-bottom: 16px; }
         .deliverable-title { font-size: 1.25rem; color: var(--navy); margin-bottom: 12px; }
         .deliverable-desc { color: var(--text-light); font-size: 0.95rem; margin-bottom: 20px; }
         .deliverable-components { display: flex; flex-wrap: wrap; gap: 8px; }
-        .deliverable-tag { padding: 6px 14px; background: var(--white); border-radius: 100px; font-size: 0.8rem; color: var(--navy); font-weight: 500; }
+        .deliverable-tag { padding: 6px 14px; background: var(--cream); border-radius: 100px; font-size: 0.8rem; color: var(--navy); font-weight: 500; }
 
         /* Experience Section */
         .experience { background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%); }
@@ -178,9 +228,10 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .about-grid, .experience-grid { grid-template-columns: 1fr; gap: 48px; }
+            .about-grid, .experience-grid, .toolkit-intro { grid-template-columns: 1fr; gap: 48px; }
             .about-image { order: -1; max-width: 400px; margin: 0 auto; }
             .phase-grid { grid-template-columns: 1fr; }
+            .toolkit-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             section { padding: 80px 0; }
@@ -189,8 +240,8 @@
             .deliverables-grid { grid-template-columns: 1fr; }
             .canvas-grid { grid-template-columns: 1fr; }
             .canvas-cell.full-width { grid-column: span 1; }
-            .canvas-display { padding: 24px; }
-            .canvas-tabs { justify-content: center; }
+            .canvas-display, .toolkit-content { padding: 24px; }
+            .canvas-tabs, .toolkit-tabs { justify-content: center; }
             .cta-buttons { flex-direction: column; align-items: center; }
         }
     </style>
@@ -202,7 +253,8 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#methodology">Methodology</a></li>
-                <li><a href="#canvases">Canvas Toolkit</a></li>
+                <li><a href="#canvases">Canvases</a></li>
+                <li><a href="#toolkit">Toolkit</a></li>
                 <li><a href="#deliverables">Deliverables</a></li>
                 <li><a href="#experience">Experience</a></li>
             </ul>
@@ -405,6 +457,219 @@
         </div>
     </section>
 
+    <!-- NEW: Implementation Toolkit Section -->
+    <section class="toolkit" id="toolkit">
+        <div class="container">
+            <div class="toolkit-intro fade-in">
+                <div class="toolkit-intro-content">
+                    <span class="section-label">Implementation Toolkit</span>
+                    <h2>Making Strategy Real</h2>
+                    <p>Beyond frameworks, we bring a comprehensive toolkit of processes, tools, and quality controls that ensure deliverables are executed professionally and on time.</p>
+                    <p>This isn't just about what we deliver — it's about how we deliver it. Structured project management, rigorous research methods, and proven financial modeling tools translate strategy into foundation-ready documentation.</p>
+                </div>
+                <div class="toolkit-stats">
+                    <div class="toolkit-stat">
+                        <div class="toolkit-stat-number">20</div>
+                        <div class="toolkit-stat-label">Week Engagement</div>
+                    </div>
+                    <div class="toolkit-stat">
+                        <div class="toolkit-stat-number">8-12</div>
+                        <div class="toolkit-stat-label">Stakeholder Interviews</div>
+                    </div>
+                    <div class="toolkit-stat">
+                        <div class="toolkit-stat-number">4</div>
+                        <div class="toolkit-stat-label">Quality Gates</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolkit-tabs fade-in">
+                <button class="toolkit-tab active" data-toolkit="discovery">Discovery Methods</button>
+                <button class="toolkit-tab" data-toolkit="analysis">Analysis Frameworks</button>
+                <button class="toolkit-tab" data-toolkit="financial">Financial Modeling</button>
+                <button class="toolkit-tab" data-toolkit="timeline">Project Timeline</button>
+                <button class="toolkit-tab" data-toolkit="quality">Quality Assurance</button>
+            </div>
+
+            <div class="toolkit-content fade-in" id="toolkit-discovery">
+                <div class="toolkit-content-header">
+                    <h3 class="toolkit-content-title">Discovery & Research Methods</h3>
+                    <p class="toolkit-content-subtitle">Comprehensive data gathering to understand current state before designing the future</p>
+                </div>
+                <div class="toolkit-grid">
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                        <h4>Document Review</h4>
+                        <p>Systematic analysis of strategic plans, financials, 990s, board minutes, program data, and governance documents.</p>
+                        <div class="toolkit-card-tags"><span class="toolkit-card-tag">3-Year Financials</span><span class="toolkit-card-tag">990 Analysis</span><span class="toolkit-card-tag">Program Data</span></div>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                        <h4>Stakeholder Interviews</h4>
+                        <p>8-12 structured interviews with leadership, staff, board, partners, and tenants. Recorded and transcribed for analysis.</p>
+                        <div class="toolkit-card-tags"><span class="toolkit-card-tag">Leadership</span><span class="toolkit-card-tag">Staff</span><span class="toolkit-card-tag">Board</span><span class="toolkit-card-tag">Partners</span></div>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+                        <h4>External Research</h4>
+                        <p>Tourism data, comparable organizations, museum benchmarks, real estate analysis, and fundraising benchmarks.</p>
+                        <div class="toolkit-card-tags"><span class="toolkit-card-tag">CVB Data</span><span class="toolkit-card-tag">Peer Analysis</span><span class="toolkit-card-tag">Benchmarks</span></div>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+                        <h4>Workshop Facilitation</h4>
+                        <p>Interactive SWOT workshops and strategic planning sessions with board and leadership teams.</p>
+                        <div class="toolkit-card-tags"><span class="toolkit-card-tag">SWOT Workshop</span><span class="toolkit-card-tag">Strategy Sessions</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolkit-content fade-in" id="toolkit-analysis" style="display:none">
+                <div class="toolkit-content-header">
+                    <h3 class="toolkit-content-title">Analysis Frameworks</h3>
+                    <p class="toolkit-content-subtitle">Rigorous analytical tools to transform data into strategic insights</p>
+                </div>
+                <ul class="toolkit-list">
+                    <li>
+                        <div class="toolkit-list-title">SWOT Analysis</div>
+                        <div class="toolkit-list-desc">Classic framework with strategic implications that drive action — not just four quadrants of bullet points.</div>
+                    </li>
+                    <li>
+                        <div class="toolkit-list-title">Porter's Five Forces</div>
+                        <div class="toolkit-list-desc">Competitive analysis examining rivalry, new entrants, substitutes, buyer power, and supplier power in the cultural sector.</div>
+                    </li>
+                    <li>
+                        <div class="toolkit-list-title">Business Model Canvas</div>
+                        <div class="toolkit-list-desc">Visual mapping of value propositions, customer segments, channels, revenue streams, resources, activities, and partnerships.</div>
+                    </li>
+                    <li>
+                        <div class="toolkit-list-title">Revenue Mix Analysis</div>
+                        <div class="toolkit-list-desc">3-year trending of all revenue sources against 60/40 contributed/earned benchmark for museums.</div>
+                    </li>
+                    <li>
+                        <div class="toolkit-list-title">Donor Pipeline Analysis</div>
+                        <div class="toolkit-list-desc">Segmentation by giving level, retention rate analysis, and 80/20 rule application for major gift focus.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="toolkit-content fade-in" id="toolkit-financial" style="display:none">
+                <div class="toolkit-content-header">
+                    <h3 class="toolkit-content-title">Financial Modeling Tools</h3>
+                    <p class="toolkit-content-subtitle">Scenario-based projections with conservative, moderate, and optimistic assumptions</p>
+                </div>
+                <div class="toolkit-grid">
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                        <h4>Heritage Tourism Revenue Model</h4>
+                        <p>Visitor volume projections, admission pricing tiers, tour package revenue, gift shop sales, and seasonality factors.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+                        <h4>Endowment Sustainability Model</h4>
+                        <p>Gap analysis, draw rate calculations, and target endowment sizing. Formula: Gap ÷ 5% = Target Endowment.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+                        <h4>Event/Rental Pricing Model</h4>
+                        <p>Space capacity analysis, market rate benchmarks, pricing tiers by customer type, and utilization projections.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                        <h4>Front Porch Museum Pro Forma</h4>
+                        <p>Capital budget, operating pro forma, staffing model, break-even analysis, and timeline to sustainability.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolkit-content fade-in" id="toolkit-timeline" style="display:none">
+                <div class="toolkit-content-header">
+                    <h3 class="toolkit-content-title">20-Week Project Timeline</h3>
+                    <p class="toolkit-content-subtitle">Structured phases with clear milestones and deliverables</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Week 1</div>
+                            <div class="timeline-title">Kickoff</div>
+                            <div class="timeline-tasks">Project charter, document request, interview scheduling</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2-3</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Weeks 2-3</div>
+                            <div class="timeline-title">Discovery</div>
+                            <div class="timeline-tasks">Document review, stakeholder interviews, external research</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">4-6</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Weeks 4-6</div>
+                            <div class="timeline-title">Analysis & Synthesis</div>
+                            <div class="timeline-tasks">Initial findings memo, SWOT workshop, financial analysis, benchmarking</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">7-12</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Weeks 7-12</div>
+                            <div class="timeline-title">Strategy Development</div>
+                            <div class="timeline-tasks">Draft Business Plan, Fundraising Strategy, Strategic Plan, Go/No-Go analysis</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">13-16</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Weeks 13-16</div>
+                            <div class="timeline-title">Validation & Refinement</div>
+                            <div class="timeline-tasks">Board presentation, stakeholder feedback, revisions, model finalization</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">17-20</div>
+                        <div class="timeline-content">
+                            <div class="timeline-week">Weeks 17-20</div>
+                            <div class="timeline-title">Documentation & Delivery</div>
+                            <div class="timeline-tasks">Professional formatting, Mellon alignment, final presentation, handoff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolkit-content fade-in" id="toolkit-quality" style="display:none">
+                <div class="toolkit-content-header">
+                    <h3 class="toolkit-content-title">Quality Assurance Process</h3>
+                    <p class="toolkit-content-subtitle">Four quality gates ensure deliverables meet foundation standards</p>
+                </div>
+                <div class="toolkit-grid">
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>Gate 1: Discovery Complete</h4>
+                        <p>All documents received, interviews completed, research compiled, initial findings validated with client.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>Gate 2: Analysis Complete</h4>
+                        <p>SWOT and competitive analysis done, financial benchmarking complete, strategic themes identified.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>Gate 3: Draft Deliverables</h4>
+                        <p>All four deliverables in draft, financial models validated, internal review completed, board presentation done.</p>
+                    </div>
+                    <div class="toolkit-card">
+                        <div class="toolkit-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>Gate 4: Final Deliverables</h4>
+                        <p>Client feedback incorporated, professional formatting complete, Mellon requirements verified, sign-off obtained.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="deliverables" id="deliverables">
         <div class="container">
             <div class="fade-in">
@@ -434,7 +699,7 @@
                 <div class="deliverable-card fade-in">
                     <div class="deliverable-letter">D</div>
                     <h3 class="deliverable-title">Final Recommendation</h3>
-                    <p class="deliverable-desc">Go/no-go analysis for major initiatives using structured decision criteria and risk assessment frameworks.</p>
+                    <p class="deliverable-desc">Go/no-go analysis for Front Porch Museum and Noir Collective relocation using structured decision criteria.</p>
                     <div class="deliverable-components"><span class="deliverable-tag">Decision Framework</span><span class="deliverable-tag">Risk Analysis</span><span class="deliverable-tag">Financial Viability</span><span class="deliverable-tag">Implementation Plan</span></div>
                 </div>
             </div>
@@ -495,9 +760,19 @@
 
     <script>
         const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+        
+        // Canvas tabs
         const canvasTabs=document.querySelectorAll('.canvas-tab');const canvasDisplays={operating:document.getElementById('canvas-operating'),swot:document.getElementById('canvas-swot'),program:document.getElementById('canvas-program'),initiative:document.getElementById('canvas-initiative'),revenue:document.getElementById('canvas-revenue')};
         canvasTabs.forEach(tab=>{tab.addEventListener('click',()=>{canvasTabs.forEach(t=>t.classList.remove('active'));tab.classList.add('active');Object.values(canvasDisplays).forEach(d=>d.style.display='none');canvasDisplays[tab.dataset.canvas].style.display='block'})});
+        
+        // Toolkit tabs
+        const toolkitTabs=document.querySelectorAll('.toolkit-tab');const toolkitDisplays={discovery:document.getElementById('toolkit-discovery'),analysis:document.getElementById('toolkit-analysis'),financial:document.getElementById('toolkit-financial'),timeline:document.getElementById('toolkit-timeline'),quality:document.getElementById('toolkit-quality')};
+        toolkitTabs.forEach(tab=>{tab.addEventListener('click',()=>{toolkitTabs.forEach(t=>t.classList.remove('active'));tab.classList.add('active');Object.values(toolkitDisplays).forEach(d=>d.style.display='none');toolkitDisplays[tab.dataset.toolkit].style.display='block'})});
+        
+        // Scroll animations
         const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+        
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'})})});
     </script>
 </body>
