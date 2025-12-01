@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Planning & Business Development | YMI Cultural Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0F1A2A;
+            --navy-light: #1A2D47;
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --cream: #FAF8F5;
+            --cream-dark: #F0EDE8;
+            --text: #2D3748;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --shadow: 0 4px 20px rgba(15, 26, 42, 0.08);
+            --shadow-lg: 0 10px 40px rgba(15, 26, 42, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 26, 42, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: var(--shadow);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 169, 98, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(201, 169, 98, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='%23C9A962' fill-opacity='1'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 100px;
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--white);
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 4px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: fadeInUp 0.8s ease 0.5s forwards, bounce 2s ease-in-out infinite 1.5s;
+            opacity: 0;
+        }
+
+        .scroll-indicator svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .section-intro {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 60px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23C9A962' stroke-width='0.5' opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+        }
+
+        .about-initials {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--gold);
+            z-index: 1;
+        }
+
+        .about-accent {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .credential {
+            padding: 8px 16px;
+            background: var(--cream);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background: var(--cream);
+            position: relative;
+        }
+
+        .methodology::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .phase-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px 32px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .phase-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .phase-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--cream-dark);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .phase-card:hover .phase-number {
+            color: var(--gold);
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .phase-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .phase-items {
+            list-style: none;
+        }
+
+        .phase-items li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--cream);
+        }
+
+        .phase-items li:last-child {
+            border-bottom: none;
+        }
+
+        .phase-items li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* Canvas Section */
+        .canvas-section {
+            background: var(--navy);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(201, 169, 98, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .canvas-section .section-title {
+            color: var(--white);
+        }
+
+        .canvas-section .section-intro {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .canvas-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .canvas-tab {
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .canvas-tab:hover,
+        .canvas-tab.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .canvas-display {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 48px;
+            position: relative;
+        }
+
+        .canvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .canvas-title {
+            font-size: 1.75rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .canvas-subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .canvas-badge {
+            padding: 8px 16px;
+            background: rgba(201, 169, 98, 0.2);
+            border-radius: 100px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .canvas-cell {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .canvas-cell:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .canvas-cell.full-width {
+            grid-column: span 2;
+        }
+
+        .canvas-cell-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .canvas-cell-prompt {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        .canvas-cell-content {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .canvas-cell-content li {
+            margin-bottom: 6px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .canvas-cell-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        /* Deliverables Section */
+        .deliverables {
+            background: var(--white);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .deliverable-card {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .deliverable-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold), transparent);
+        }
+
+        .deliverable-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+        }
+
+        .deliverable-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .deliverable-title {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 12px;
+        }
+
+        .deliverable-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .deliverable-components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .deliverable-tag {
+            padding: 4px 12px;
+            background: var(--white);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--cream-dark);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+        }
+
+        .experience-sidebar h3 {
+            font-size: 1.75rem;
+            color: var(--navy);
+            margin-bottom: 24px;
+        }
+
+        .experience-sidebar p {
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .experience-stat {
+            padding: 24px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .experience-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .experience-items {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .experience-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 24px;
+        }
+
+        .experience-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .experience-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--gold);
+        }
+
+        .experience-content h4 {
+            font-size: 1.25rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .experience-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .experience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .experience-tag {
+            padding: 4px 12px;
+            background: var(--cream);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--navy);
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .experience-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image {
+                order: -1;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .phase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .deliverables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .canvas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .canvas-cell.full-width {
+                grid-column: span 1;
+            }
+
+            .canvas-display {
+                padding: 24px;
+            }
+
+            .canvas-tabs {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="nav-logo">MK Consulting</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#methodology">Methodology</a></li>
+                <li><a href="#canvases">Canvas Toolkit</a></li>
+                <li><a href="#deliverables">Deliverables</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-label">Strategic Planning & Business Development</span>
+                <h1>Transforming <span>Cultural Institutions</span> Through Strategic Vision</h1>
+                <p class="hero-subtitle">A proven methodology for organizational transformation, heritage tourism development, and sustainable growth — adapted from 24+ engagements across diverse contexts.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">24+</div>
+                        <div class="stat-label">Organizations Served</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$63B</div>
+                        <div class="stat-label">Heritage Tourism Market</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="about-image-main">
+                        <span class="about-initials">MK</span>
+                    </div>
+                    <div class="about-accent"></div>
+                </div>
+                <div class="about-content fade-in">
+                    <span class="section-label">About</span>
+                    <h2>Bridging Strategy & Implementation</h2>
+                    <p>I bring over a decade of experience in program management, organizational consulting, and digital platform development. My work spans cross-cultural contexts, from coordinating multi-county child protection programs across Kenya to advising nonprofits on strategic transformation.</p>
+                    <p>This unique background enables me to understand both the strategic vision and operational reality of organizational change — ensuring that plans don't just look good on paper, but actually get implemented.</p>
+                    <p>My approach centers on collaborative, canvas-based methodologies that engage stakeholders, build consensus, and create documentation suitable for foundation submissions.</p>
+                    <div class="credentials">
+                        <span class="credential">PMP Candidate</span>
+                        <span class="credential">Nonprofit Strategy</span>
+                        <span class="credential">Digital Platforms</span>
+                        <span class="credential">Heritage Tourism</span>
+                        <span class="credential">Cross-Cultural Leadership</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section class="methodology" id="methodology">
+        <div class="container">
+            <div class="fade-in">
+                <span class="section-label">Methodology</span>
+                <h2 class="section-title">A Proven Three-Phase Approach</h2>
+                <p class="section-intro">Our engagement methodology adapts a framework refined through 24+ organizational transformation projects, customized for cultural institutions while maintaining rigorous structure.</p>
+            </div>
+            
+            <div class="phase-grid">
+                <div class="phase-card fade-in">
+                    <div class="phase-number">01</div>
+                    <h3 class="phase-title">Discovery & Assessment</h3>
+                    <p class="phase-desc">Understand where you are today through comprehensive research and stakeholder engagement.</p>
+                    <ul class="phase-items">
+                        <li>Document review & financial analysis</li>
+                        <li>Stakeholder interviews (8-12)</li>
+                        <li>SWOT analysis workshop</li>
+                        <li>Current state operating model</li>
+                        <li>External benchmarking research</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card fade-in">
+                    <div class="phase-number">02</div>
+                    <h3 class="phase-title">Strategy Development</h3>
+                    <p class="phase-desc">Design your future through collaborative canvas workshops and rigorous analysis.</p>
+                    <ul class="phase-items">
+                        <li>Strategic direction alignment</li>
+                        <li>Future state operating model</li>
+                        <li>Program design canvases</li>
+                        <li>Revenue stream optimization</li>
+                        <li>Initiative decision frameworks</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-card fade-in">
+                    <div class="phase-number">03</div>
+                    <h3 class="phase-title">Documentation & Delivery</h3>
+                    <p class="phase-desc">Translate strategy into actionable plans and foundation-ready deliverables.</p>
+                    <ul class="phase-items">
+                        <li>Business development plan</li>
+                        <li>Fundraising & endowment strategy</li>
+                        <li>Updated strategic plan</li>
+                        <li>Go/no-go recommendations</li>
+                        <li>Implementation roadmap</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canvas Section -->
+    <section class="canvas-section" id="canvases">
+        <div class="container">
+            <div class="fade-in">
+                <span class="section-label">Strategic Canvas Toolkit</span>
+                <h2 class="section-title">Visual Frameworks for Organizational Clarity</h2>
+                <p class="section-intro">Interactive canvas templates that facilitate collaborative workshops, ensure comprehensive analysis, and produce documentation aligned with foundation requirements.</p>
+            </div>
+            
+            <div class="canvas-tabs fade-in">
+                <button class="canvas-tab active" data-canvas="operating">Operating Model</button>
+                <button class="canvas-tab" data-canvas="swot">SWOT Analysis</button>
+                <button class="canvas-tab" data-canvas="program">Program Design</button>
+                <button class="canvas-tab" data-canvas="initiative">Strategic Initiative</button>
+                <button class="canvas-tab" data-canvas="revenue">Revenue Stream</button>
+            </div>
+            
+            <div class="canvas-display fade-in" id="canvas-operating">
+                <div class="canvas-header">
+                    <div>
+                        <h3 class="canvas-title">Operating Model Canvas</h3>
+                        <p class="canvas-subtitle">Map current and future organizational models to visualize transformation</p>
+                    </div>
+                    <span class="canvas-badge">Current → Future</span>
+                </div>
+                <div class="canvas-grid">
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Target Audiences</div>
+                        <p class="canvas-cell-prompt">Who do we serve? Primary and secondary?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Heritage tourists (regional & national)</li>
+                            <li>Local African American community</li>
+                            <li>Educational institutions</li>
+                            <li>Black entrepreneurs and artists</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Impact Goals</div>
+                        <p class="canvas-cell-prompt">What impact do we make?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Preserve African American heritage</li>
+                            <li>Drive economic development</li>
+                            <li>Educate visitors about Black history</li>
+                            <li>Anchor heritage tourism in region</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Primary Programs & Activities</div>
+                        <p class="canvas-cell-prompt">What programs achieve our goals?</p>
+                        <ul class="canvas-cell-content" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                            <li>Heritage Tourism</li>
+                            <li>Arts & Culture</li>
+                            <li>Educational Programs</li>
+                            <li>Facility Rentals</li>
+                            <li>Business Incubation</li>
+                            <li>Community Events</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Revenue Sources</div>
+                        <p class="canvas-cell-prompt">Target: 60% Contributed / 40% Earned</p>
+                        <ul class="canvas-cell-content">
+                            <li>Foundation grants: 25%</li>
+                            <li>Individual giving: 20%</li>
+                            <li>Admissions/tours: 15%</li>
+                            <li>Facility rentals: 12%</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Key Partners</div>
+                        <p class="canvas-cell-prompt">Who supports our work?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Tourism boards & CVBs</li>
+                            <li>Heritage trail partners</li>
+                            <li>Local business associations</li>
+                            <li>Universities & schools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas-display fade-in" id="canvas-swot" style="display: none;">
+                <div class="canvas-header">
+                    <div>
+                        <h3 class="canvas-title">SWOT Analysis Canvas</h3>
+                        <p class="canvas-subtitle">Systematic assessment of internal and external factors</p>
+                    </div>
+                    <span class="canvas-badge">Strategic Assessment</span>
+                </div>
+                <div class="canvas-grid">
+                    <div class="canvas-cell" style="border-left: 3px solid #48BB78;">
+                        <div class="canvas-cell-title" style="color: #48BB78;">Strengths</div>
+                        <p class="canvas-cell-prompt">What are we good at?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Historic legacy and brand recognition</li>
+                            <li>Prime location in revitalizing district</li>
+                            <li>Strong community partnerships</li>
+                            <li>Successful incubator model</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #4299E1;">
+                        <div class="canvas-cell-title" style="color: #4299E1;">Opportunities</div>
+                        <p class="canvas-cell-prompt">External factors we can leverage?</p>
+                        <ul class="canvas-cell-content">
+                            <li>$63B heritage tourism market</li>
+                            <li>Heritage trail development</li>
+                            <li>District revitalization momentum</li>
+                            <li>Foundation alignment</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #F56565;">
+                        <div class="canvas-cell-title" style="color: #F56565;">Weaknesses</div>
+                        <p class="canvas-cell-prompt">What could we improve?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Revenue diversification gaps</li>
+                            <li>Staffing capacity constraints</li>
+                            <li>Technology/systems needs</li>
+                            <li>Endowment size limitations</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #ED8936;">
+                        <div class="canvas-cell-title" style="color: #ED8936;">Threats</div>
+                        <p class="canvas-cell-prompt">External factors that could harm us?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Gentrification pressures</li>
+                            <li>Federal funding cuts</li>
+                            <li>Competition for donors</li>
+                            <li>Economic uncertainty</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Strategic Implications</div>
+                        <p class="canvas-cell-prompt">Based on SWOT, what actions should we prioritize?</p>
+                        <div class="canvas-cell-content">Leverage historic legacy + heritage tourism growth to establish national recognition while addressing capacity constraints through strategic hiring and technology investment.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas-display fade-in" id="canvas-program" style="display: none;">
+                <div class="canvas-header">
+                    <div>
+                        <h3 class="canvas-title">Program Design Canvas</h3>
+                        <p class="canvas-subtitle">Design each program area with clear goals, activities, and resources</p>
+                    </div>
+                    <span class="canvas-badge">Complete 4x</span>
+                </div>
+                <div class="canvas-grid">
+                    <div class="canvas-cell" style="border-left: 3px solid #F56565;">
+                        <div class="canvas-cell-title">Problem Statement</div>
+                        <p class="canvas-cell-prompt">What problem does this program address?</p>
+                        <div class="canvas-cell-content">Define the specific challenge using Who, What, Where, When, Why framework</div>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #48BB78;">
+                        <div class="canvas-cell-title">Program Goal</div>
+                        <p class="canvas-cell-prompt">What outcomes will we achieve?</p>
+                        <div class="canvas-cell-content">Measurable impact aligned with organizational mission and strategic priorities</div>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Main Activities</div>
+                        <p class="canvas-cell-prompt">What activities operate this program?</p>
+                        <ul class="canvas-cell-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                            <li>Activity 1: Description</li>
+                            <li>Activity 2: Description</li>
+                            <li>Activity 3: Description</li>
+                            <li>Activity 4: Description</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Capital Expenses</div>
+                        <p class="canvas-cell-prompt">One-time investments needed?</p>
+                        <div class="canvas-cell-content">Equipment, renovation, technology, setup costs</div>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Operating Costs</div>
+                        <p class="canvas-cell-prompt">Annual recurring expenses?</p>
+                        <div class="canvas-cell-content">Staff, materials, marketing, overhead allocation</div>
+                    </div>
+                    <div class="canvas-cell full-width" style="border-left: 3px solid var(--gold);">
+                        <div class="canvas-cell-title">Key Performance Indicators</div>
+                        <p class="canvas-cell-prompt">How will we measure success?</p>
+                        <ul class="canvas-cell-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                            <li>KPI 1: Target & Frequency</li>
+                            <li>KPI 2: Target & Frequency</li>
+                            <li>KPI 3: Target & Frequency</li>
+                            <li>KPI 4: Target & Frequency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas-display fade-in" id="canvas-initiative" style="display: none;">
+                <div class="canvas-header">
+                    <div>
+                        <h3 class="canvas-title">Strategic Initiative Canvas</h3>
+                        <p class="canvas-subtitle">Go/No-Go decision framework for major investments</p>
+                    </div>
+                    <span class="canvas-badge">Decision Framework</span>
+                </div>
+                <div class="canvas-grid">
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Purpose Statement</div>
+                        <p class="canvas-cell-prompt">What will this initiative achieve?</p>
+                        <div class="canvas-cell-content">Clear articulation of the initiative's intended outcomes and value</div>
+                    </div>
+                    <div class="canvas-cell">
+                        <div class="canvas-cell-title">Strategic Justification</div>
+                        <p class="canvas-cell-prompt">Why should we pursue this?</p>
+                        <div class="canvas-cell-content">Alignment with mission, strategic priorities, and market opportunity</div>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Decision Criteria Assessment (Score 1-3 each)</div>
+                        <ul class="canvas-cell-content" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                            <li>Mission Alignment: ___</li>
+                            <li>Financial Viability: ___</li>
+                            <li>Organizational Capacity: ___</li>
+                            <li>Community Support: ___</li>
+                            <li>Funding Availability: ___</li>
+                            <li>Timeline Feasibility: ___</li>
+                            <li>Risk Level: ___</li>
+                            <li style="color: var(--gold); font-weight: 600;">TOTAL: ___ / 21</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #F56565;">
+                        <div class="canvas-cell-title">Key Risks</div>
+                        <p class="canvas-cell-prompt">What could go wrong?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Risk 1</li>
+                            <li>Risk 2</li>
+                            <li>Risk 3</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid #48BB78;">
+                        <div class="canvas-cell-title">Mitigation Strategies</div>
+                        <p class="canvas-cell-prompt">How would we address each risk?</p>
+                        <ul class="canvas-cell-content">
+                            <li>Mitigation 1</li>
+                            <li>Mitigation 2</li>
+                            <li>Mitigation 3</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell full-width" style="background: rgba(201, 169, 98, 0.1); border: 1px solid rgba(201, 169, 98, 0.3);">
+                        <div class="canvas-cell-title">Recommendation</div>
+                        <div class="canvas-cell-content" style="display: flex; gap: 24px; font-weight: 500;">
+                            <span>☐ PROCEED</span>
+                            <span>☐ PROCEED WITH CONDITIONS</span>
+                            <span>☐ DELAY</span>
+                            <span>☐ DO NOT PROCEED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvas-display fade-in" id="canvas-revenue" style="display: none;">
+                <div class="canvas-header">
+                    <div>
+                        <h3 class="canvas-title">Revenue Stream Canvas</h3>
+                        <p class="canvas-subtitle">Map all revenue sources and design diversification strategy</p>
+                    </div>
+                    <span class="canvas-badge">60/40 Target</span>
+                </div>
+                <div class="canvas-grid">
+                    <div class="canvas-cell" style="border-left: 3px solid #4299E1;">
+                        <div class="canvas-cell-title">Contributed Income (60%)</div>
+                        <p class="canvas-cell-prompt">Philanthropic revenue sources</p>
+                        <ul class="canvas-cell-content">
+                            <li>Individual Giving: Annual, Major, Planned</li>
+                            <li>Foundation Grants: Program, Operating</li>
+                            <li>Corporate Sponsorship: Events, Programs</li>
+                            <li>Government Grants: Federal, State, Local</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell" style="border-left: 3px solid var(--gold);">
+                        <div class="canvas-cell-title">Earned Income (40%)</div>
+                        <p class="canvas-cell-prompt">Self-generated revenue sources</p>
+                        <ul class="canvas-cell-content">
+                            <li>Admissions: General, Tours, Special</li>
+                            <li>Memberships: Annual dues</li>
+                            <li>Facility Rentals: Events, Meetings</li>
+                            <li>Lease Income: Tenant spaces</li>
+                        </ul>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Endowment Strategy</div>
+                        <p class="canvas-cell-prompt">Long-term sustainability through endowment growth</p>
+                        <div class="canvas-cell-content">Formula: Required Endowment = (Annual Operating Gap × Safety Factor) ÷ 5% Draw Rate. Example: $150K gap ÷ 0.05 = $3M endowment target</div>
+                    </div>
+                    <div class="canvas-cell full-width">
+                        <div class="canvas-cell-title">Donor Pipeline Analysis</div>
+                        <p class="canvas-cell-prompt">Remember: 80% of gifts come from 20% of donors</p>
+                        <ul class="canvas-cell-content" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                            <li>Major Donors ($1,000+): ___ donors = ___% of giving</li>
+                            <li>Mid-Level ($250-999): ___ donors = ___% of giving</li>
+                            <li>Small Donors (<$250): ___ donors = ___% of giving</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deliverables Section -->
+    <section class="deliverables" id="deliverables">
+        <div class="container">
+            <div class="fade-in">
+                <span class="section-label">Deliverables</span>
+                <h2 class="section-title">Foundation-Ready Documentation</h2>
+                <p class="section-intro">Four comprehensive deliverables designed for Mellon Foundation submission and organizational implementation.</p>
+            </div>
+            
+            <div class="deliverables-grid">
+                <div class="deliverable-card fade-in">
+                    <div class="deliverable-letter">A</div>
+                    <h3 class="deliverable-title">Business Development Plan</h3>
+                    <p class="deliverable-desc">Comprehensive strategy for heritage tourism, arts programming, facility rentals, and earned revenue optimization.</p>
+                    <div class="deliverable-components">
+                        <span class="deliverable-tag">Heritage Tourism Strategy</span>
+                        <span class="deliverable-tag">Program Development</span>
+                        <span class="deliverable-tag">Pricing Models</span>
+                        <span class="deliverable-tag">Revenue Projections</span>
+                    </div>
+                </div>
+                
+                <div class="deliverable-card fade-in">
+                    <div class="deliverable-letter">B</div>
+                    <h3 class="deliverable-title">Fundraising & Endowment Strategy</h3>
+                    <p class="deliverable-desc">Donor pipeline development, major gift cultivation, and endowment growth projections for long-term sustainability.</p>
+                    <div class="deliverable-components">
+                        <span class="deliverable-tag">Donor Analysis</span>
+                        <span class="deliverable-tag">Campaign Calendar</span>
+                        <span class="deliverable-tag">Endowment Modeling</span>
+                        <span class="deliverable-tag">Revenue Diversification</span>
+                    </div>
+                </div>
+                
+                <div class="deliverable-card fade-in">
+                    <div class="deliverable-letter">C</div>
+                    <h3 class="deliverable-title">Updated Strategic Plan</h3>
+                    <p class="deliverable-desc">Mission-aligned goals, objectives, timelines, and KPIs integrating business plan elements and capacity building.</p>
+                    <div class="deliverable-components">
+                        <span class="deliverable-tag">Vision & Mission</span>
+                        <span class="deliverable-tag">Strategic Priorities</span>
+                        <span class="deliverable-tag">Implementation Roadmap</span>
+                        <span class="deliverable-tag">Success Metrics</span>
+                    </div>
+                </div>
+                
+                <div class="deliverable-card fade-in">
+                    <div class="deliverable-letter">D</div>
+                    <h3 class="deliverable-title">Final Recommendation</h3>
+                    <p class="deliverable-desc">Go/no-go analysis for major initiatives using structured decision criteria and risk assessment frameworks.</p>
+                    <div class="deliverable-components">
+                        <span class="deliverable-tag">Decision Framework</span>
+                        <span class="deliverable-tag">Risk Analysis</span>
+                        <span class="deliverable-tag">Financial Viability</span>
+                        <span class="deliverable-tag">Implementation Plan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="experience-grid">
+                <div class="experience-sidebar fade-in">
+                    <h3>Relevant Experience</h3>
+                    <p>A track record of organizational transformation, program management, and strategic consulting across diverse contexts.</p>
+                    
+                    <div class="experience-stat">
+                        <div class="experience-stat-number">24+</div>
+                        <div class="experience-stat-label">County programs coordinated</div>
+                    </div>
+                    <div class="experience-stat">
+                        <div class="experience-stat-number">10+</div>
+                        <div class="experience-stat-label">Years program management</div>
+                    </div>
+                    <div class="experience-stat">
+                        <div class="experience-stat-number">$MM</div>
+                        <div class="experience-stat-label">Programs managed</div>
+                    </div>
+                </div>
+                
+                <div class="experience-items">
+                    <div class="experience-item fade-in">
+                        <div class="experience-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="experience-content">
+                            <h4>Multi-Stakeholder Program Coordination</h4>
+                            <p>Managed child protection programs across 24+ counties, coordinating government agencies, community organizations, and international donors with complex stakeholder alignment.</p>
+                            <div class="experience-tags">
+                                <span class="experience-tag">Government Relations</span>
+                                <span class="experience-tag">Community Engagement</span>
+                                <span class="experience-tag">Donor Management</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="experience-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="experience-content">
+                            <h4>Digital Platform Development</h4>
+                            <p>Developed ThriveCare digital case management platform, translating organizational needs into technology solutions for program delivery and monitoring.</p>
+                            <div class="experience-tags">
+                                <span class="experience-tag">Product Development</span>
+                                <span class="experience-tag">Requirements Analysis</span>
+                                <span class="experience-tag">Implementation</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="experience-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </div>
+                        <div class="experience-content">
+                            <h4>Nonprofit Organizational Consulting</h4>
+                            <p>Conducted MOU portfolio analysis, funding gap identification, and strategic recommendations with implementation tracking for nonprofit organizations.</p>
+                            <div class="experience-tags">
+                                <span class="experience-tag">Strategic Planning</span>
+                                <span class="experience-tag">Financial Analysis</span>
+                                <span class="experience-tag">Capacity Building</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item fade-in">
+                        <div class="experience-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <div class="experience-content">
+                            <h4>Cross-Cultural Bridge Building</h4>
+                            <p>Experience bridging US-Kenya contexts, working with international stakeholders, and navigating cultural nuance in program design and implementation.</p>
+                            <div class="experience-tags">
+                                <span class="experience-tag">International Development</span>
+                                <span class="experience-tag">Cultural Competency</span>
+                                <span class="experience-tag">Stakeholder Alignment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2>Ready to Transform Your Organization?</h2>
+                <p>Let's discuss how this proven methodology can help you achieve your strategic goals and secure foundation funding.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:contact@example.com" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        Schedule a Conversation
+                    </a>
+                    <a href="#" class="btn btn-secondary" id="downloadBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Canvas Toolkit
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Moses Kuria. Methodology adapted from <a href="#">WezaCare Transition Roadmap</a> © 2023</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Canvas tab switching
+        const canvasTabs = document.querySelectorAll('.canvas-tab');
+        const canvasDisplays = {
+            'operating': document.getElementById('canvas-operating'),
+            'swot': document.getElementById('canvas-swot'),
+            'program': document.getElementById('canvas-program'),
+            'initiative': document.getElementById('canvas-initiative'),
+            'revenue': document.getElementById('canvas-revenue')
+        };
+
+        canvasTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                canvasTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all canvas displays
+                Object.values(canvasDisplays).forEach(display => {
+                    display.style.display = 'none';
+                });
+                
+                // Show selected canvas display
+                const canvasId = tab.getAttribute('data-canvas');
+                canvasDisplays[canvasId].style.display = 'block';
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
